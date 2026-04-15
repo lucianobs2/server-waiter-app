@@ -10,7 +10,7 @@ ordersRoutes.post('/orders', (request, response) => {
 });
 
 ordersRoutes.patch('/orders/:orderId', (request, response) => {
-  response.send('get orders by id');
+  response.send('change order status');
 });
 
 ordersRoutes.delete('/orders/:orderId', (request, response) => {
