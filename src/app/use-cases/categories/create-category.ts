@@ -1,10 +1,26 @@
-import type { Request, Response } from 'express';
 import { Category } from '../../models/Category.js';
 
-export async function createCategory(request: Request, response: Response) {
-  const { name, icon } = request.body;
+interface IRequest {
+  name: string;
+  icon: string;
+}
 
-  const category = await Category.create({ name, icon });
+interface IResponse {
+  category: {
+    name: string;
+    icon: string;
+  };
+}
 
-  response.json(category);
+export async function createCategory({
+  name,
+  icon,
+}: IRequest): Promise<IResponse> {
+  try {
+    const category = await Category.create({ name, icon });
+    return { category };
+  } catch (error) {
+    console.error(error);
+    throw new Error('Internal server error');
+  }
 }

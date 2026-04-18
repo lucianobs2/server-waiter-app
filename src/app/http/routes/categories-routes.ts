@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createCategory } from '../../use-cases/categories/create-category.js';
-import { listCategories } from '../../use-cases/categories/list-categories.js';
+import { createCategoryController } from '../controllers/categories/create-category-controller.js';
+import { listCategoriesController } from '../controllers/categories/list-categories-controller.js';
 
 export const categoriesRoutes = Router();
-categoriesRoutes.get('/categories', listCategories);
-categoriesRoutes.post('/categories', createCategory);
+categoriesRoutes.get('/categories', listCategoriesController);
+categoriesRoutes.post('/categories', createCategoryController);
